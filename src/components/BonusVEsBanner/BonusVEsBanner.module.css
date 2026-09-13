@@ -1,0 +1,168 @@
+.scene {
+  position: relative;
+  width: min(100%, 420px);
+  height: 270px;
+}
+
+.badge {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(231, 201, 120, 0.14);
+  border: 1px solid rgba(231, 201, 120, 0.24);
+  color: var(--gold-soft);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bonusBox {
+  position: absolute;
+  left: 52px;
+  top: 64px;
+  width: 150px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(231, 201, 120, 0.22),
+    rgba(255, 255, 255, 0.04)
+  );
+  border: 1px solid rgba(231, 201, 120, 0.26);
+  box-shadow: 0 22px 34px rgba(17, 19, 28, 0.44);
+  animation: boxOpen 3s ease-in-out infinite;
+}
+
+.bonusBox span {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--gold-soft);
+}
+
+.meter {
+  position: absolute;
+  left: 52px;
+  bottom: 34px;
+  width: 200px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.meterFill {
+  width: 72%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(231, 201, 120, 0.72),
+    rgba(108, 168, 255, 0.9)
+  );
+}
+
+.coinStack {
+  position: absolute;
+  right: 34px;
+  bottom: 44px;
+  width: 120px;
+  height: 70px;
+}
+
+.coinStack svg {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  padding: 8px;
+  color: var(--gold-soft);
+}
+
+.coinOne {
+  left: 8px;
+  bottom: 10px;
+  animation: floatUp 2.8s ease-in-out infinite;
+}
+
+.coinTwo {
+  left: 40px;
+  bottom: 0;
+  animation: floatUp 3.2s ease-in-out infinite 0.4s;
+}
+
+.coinThree {
+  left: 74px;
+  bottom: 12px;
+  animation: floatUp 2.6s ease-in-out infinite 0.8s;
+}
+
+.sparkles {
+  position: absolute;
+  right: 68px;
+  top: 74px;
+  color: var(--blue-soft);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+.trend {
+  position: absolute;
+  right: 28px;
+  bottom: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(108, 168, 255, 0.1);
+  border: 1px solid rgba(108, 168, 255, 0.18);
+  color: var(--blue-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+@keyframes boxOpen {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.02);
+  }
+}
+
+@keyframes floatUp {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}

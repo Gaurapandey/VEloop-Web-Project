@@ -1,0 +1,99 @@
+.scene {
+  position: relative;
+  width: min(100%, 420px);
+  height: 260px;
+}
+
+.walletCard,
+.balanceCardOne,
+.balanceCardTwo {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 160px;
+  padding: 16px 14px;
+  border-radius: 18px;
+  background: rgba(12, 17, 27, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 32px rgba(12, 17, 27, 0.34);
+}
+
+.walletCard {
+  left: 26px;
+  top: 52px;
+  color: var(--blue-soft);
+}
+
+.balanceCardOne {
+  left: 52px;
+  bottom: 28px;
+  color: var(--gold-soft);
+}
+
+.balanceCardTwo {
+  right: 38px;
+  bottom: 40px;
+  color: var(--silver);
+}
+
+.label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.value {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.swapRing {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle,
+    rgba(138, 123, 255, 0.22),
+    rgba(108, 168, 255, 0.1)
+  );
+  border: 1px solid rgba(138, 123, 255, 0.35);
+  color: var(--blue-soft);
+  box-shadow: 0 22px 30px rgba(138, 123, 255, 0.2);
+  animation: rotateSwap 4.4s linear infinite;
+}
+
+.pill {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(138, 123, 255, 0.14);
+  border: 1px solid rgba(138, 123, 255, 0.2);
+  color: var(--blue-soft);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+@keyframes rotateSwap {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

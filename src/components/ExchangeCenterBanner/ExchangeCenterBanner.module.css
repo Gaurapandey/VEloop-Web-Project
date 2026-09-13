@@ -1,0 +1,126 @@
+.scene {
+  position: relative;
+  width: min(100%, 420px);
+  height: 260px;
+}
+
+.walletBlock,
+.rewardCard {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 18px;
+  background: rgba(12, 17, 27, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 32px rgba(12, 17, 27, 0.34);
+}
+
+.walletBlock {
+  left: 26px;
+  top: 60px;
+  padding: 16px 18px;
+  color: var(--blue-soft);
+}
+
+.rewardCard {
+  right: 28px;
+  bottom: 40px;
+  padding: 16px 18px;
+  color: var(--gold-soft);
+}
+
+.label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.value {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--white);
+}
+
+.coinStack {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 80px;
+}
+
+.coinStack svg {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--gold-soft);
+}
+
+.coinOne {
+  left: 10px;
+  top: 20px;
+}
+.coinTwo {
+  left: 42px;
+  top: 6px;
+}
+.coinThree {
+  left: 72px;
+  top: 20px;
+}
+
+.exchangeRing {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle,
+    rgba(108, 168, 255, 0.22),
+    rgba(231, 201, 120, 0.08)
+  );
+  border: 1px solid rgba(108, 168, 255, 0.2);
+  color: var(--blue-soft);
+  box-shadow: 0 18px 28px rgba(17, 22, 33, 0.24);
+  animation: exchangeMove 3.5s ease-in-out infinite;
+}
+
+.arrowChip {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(108, 168, 255, 0.1);
+  border: 1px solid rgba(108, 168, 255, 0.2);
+  color: var(--blue-soft);
+}
+
+@keyframes exchangeMove {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -52%) scale(1.04);
+  }
+}
