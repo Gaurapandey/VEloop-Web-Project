@@ -17,7 +17,7 @@ function Home() {
       <section className="dashboard-hero">
         <div className="dashboard-panel dashboard-panel--primary">
           <span className="eyebrow">Rewards overview</span>
-          <h1>Welcome back, Aaron</h1>
+          <h1>Welcome back, Yaron</h1>
           <p>
             Your VELOOP rewards ecosystem is performing strongly. Track referrals,
             convert eligible balances, unlock bonus opportunities, and redeem
@@ -75,18 +75,19 @@ function Home() {
           <div className="feature-grid__item feature-grid__item--wide">
             <ReferEarnBanner />
           </div>
-          <div className="feature-grid__item">
+          <div className="feature-grid__item feature-grid__item--wide">
             <SwapCenterBanner />
           </div>
-          <div className="feature-grid__item">
+           <div className="feature-grid__item feature-grid__item--wide">
             <BonusVEsBanner />
           </div>
-          <div className="feature-grid__item">
+          
+          <div className="feature-grid__item feature-grid__item--wide">
             <CaptchaTasksBanner />
           </div>
-          <div className="feature-grid__item">
+          <div className="feature-grid__item feature-grid__item--wide">
             <ExchangeCenterBanner />
-          </div>
+          </div> 
         </div>
       </section>
     </div>
