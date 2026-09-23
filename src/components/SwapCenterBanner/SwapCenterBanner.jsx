@@ -1,6 +1,7 @@
 import { ArrowLeftRight, Wallet, Coins, CircleDollarSign } from 'lucide-react';
 import RewardBanner from '../RewardBanner/RewardBanner';
 import styles from './SwapCenterBanner.module.css';
+import SwapCenterImage from '../../Assets/Images/SwapCenter.png';
 
 function SwapCenterBanner() {
   return (
@@ -12,38 +13,9 @@ function SwapCenterBanner() {
       highlight="Conversion available"
       theme="purple"
       smallLabel="Balance Conversion"
+      backgroundimg={SwapCenterImage}
     >
-      <div className={styles.scene}>
-        <div className={styles.walletCard}>
-          <Wallet size={18} />
-          <div>
-            <div className={styles.label}>Wallet</div>
-            <div className={styles.value}>7,420 VE</div>
-          </div>
-        </div>
-
-        <div className={styles.swapRing}>
-          <ArrowLeftRight size={22} />
-        </div>
-
-        <div className={styles.balanceCardOne}>
-          <CircleDollarSign size={18} />
-          <div>
-            <div className={styles.label}>VE</div>
-            <div className={styles.value}>4,200</div>
-          </div>
-        </div>
-
-        <div className={styles.balanceCardTwo}>
-          <Coins size={18} />
-          <div>
-            <div className={styles.label}>SVE</div>
-            <div className={styles.value}>4,200</div>
-          </div>
-        </div>
-
-        <div className={styles.pill}>Live rates</div>
-      </div>
+      
     </RewardBanner>
   );
 }

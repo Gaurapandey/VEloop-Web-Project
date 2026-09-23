@@ -1,6 +1,7 @@
 import { Sparkles, Coins, BadgePercent, Gift, TrendingUp } from 'lucide-react';
 import RewardBanner from '../RewardBanner/RewardBanner';
 import styles from './BonusVEsBanner.module.css';
+import BonusVE from '../../Assets/Images/BonusVEs.png';
 
 function BonusVEsBanner() {
   return (
@@ -12,24 +13,9 @@ function BonusVEsBanner() {
       highlight="Bonus rewards available"
       theme="gold"
       smallLabel="Reward boost"
+      backgroundimg={BonusVE}
     >
-      <div className={styles.scene}>
-        <div className={styles.badge}><BadgePercent size={18} /> Bonus</div>
-        <div className={styles.bonusBox}>
-          <Gift size={28} />
-          <span>+VE</span>
-        </div>
-        <div className={styles.meter}>
-          <div className={styles.meterFill}></div>
-        </div>
-        <div className={styles.coinStack}>
-          <Coins size={16} className={styles.coinOne} />
-          <Coins size={18} className={styles.coinTwo} />
-          <Coins size={20} className={styles.coinThree} />
-        </div>
-        <div className={styles.sparkles}><Sparkles size={16} /></div>
-        <div className={styles.trend}><TrendingUp size={16} /> 2.5x</div>
-      </div>
+      
     </RewardBanner>
   );
 }

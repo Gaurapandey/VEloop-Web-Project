@@ -1,6 +1,7 @@
 import { ShieldCheck, CheckCircle2, CircleDashed, Keyboard, Coins } from 'lucide-react';
 import RewardBanner from '../RewardBanner/RewardBanner';
 import styles from './CaptchaTasksBanner.module.css';
+import captchaImage from '../../Assets/Images/captcha.png';
 
 function CaptchaTasksBanner() {
   return (
@@ -12,33 +13,9 @@ function CaptchaTasksBanner() {
       highlight="Verification required"
       theme="silver"
       smallLabel="Task verification"
+      backgroundimg={captchaImage}
     >
-      <div className={styles.scene}>
-        <div className={styles.panel}>
-          <div className={styles.headerRow}>
-            <ShieldCheck size={16} />
-            <span>Task Check</span>
-          </div>
-
-          <div className={styles.checkBox}>✓</div>
-          <div className={styles.progressLine}>
-            <span></span>
-          </div>
-        </div>
-
-        <div className={styles.keyboardBox}>
-          <Keyboard size={18} />
-        </div>
-
-        <div className={styles.rewardPill}>
-          <Coins size={14} />
-          Reward
-        </div>
-
-        <div className={styles.checkBadge}>
-          <CheckCircle2 size={19} />
-        </div>
-      </div>
+      
     </RewardBanner>
   );
 }
