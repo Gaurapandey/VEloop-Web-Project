@@ -16,12 +16,13 @@ function RewardBanner({
   return (
     <section
       className={`${styles.banner} ${styles[theme]}`}
-      style={
-        backgroundimg
-          ? { '--banner-bg-image': `url(${backgroundimg})` }
-          : undefined
-      }
+      style={{
+        '--banner-bg': backgroundimg ? `url(${backgroundimg})` : 'none',
+      }}
     >
+      {/* Background layer */}
+      <div className={styles.backgroundLayer} aria-hidden="true" />
+
       <div className={styles.content}>
         <div className={styles.headlineWrap}>
           {smallLabel && (
@@ -34,7 +35,9 @@ function RewardBanner({
         <p className={styles.description}>{description}</p>
 
         {highlight && (
-          <div className={styles.highlight}>{highlight}</div>
+          <div className={styles.highlight}>
+            {highlight}
+          </div>
         )}
 
         <Link
@@ -42,7 +45,7 @@ function RewardBanner({
           className={styles.cta}
           aria-label={ctaText}
         >
-          <span className='text'>{ctaText}</span>
+          <span className="text">{ctaText}</span>
 
           <span className={styles.arrowWrap}>
             <ArrowRight size={17} />
@@ -50,7 +53,12 @@ function RewardBanner({
         </Link>
       </div>
 
-      {children}
+      {/* Optional foreground children */}
+      {children && (
+        <div className={styles.imageSection}>
+          {children}
+        </div>
+      )}
     </section>
   );
 }

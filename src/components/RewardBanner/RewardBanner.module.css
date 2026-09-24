@@ -1,400 +1,468 @@
- /* =================================
-   Base Banner
+
+.banner {
+  --accent: #8a7bff;
+  --accent-soft: rgba(138, 123, 255, 0.12);
+  --accent-border: rgba(138, 123, 255, 0.22);
+
+  --banner-bg: none;
+
+  --white: #ffffff;
+  --dark-bg: #11151d;
+
+  position: relative;
+  isolation: isolate;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  align-items: stretch;
+
+  width: 100%;
+
+  height: 430px;
+  min-height: 410px;
+  max-height: 450px;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  
+
+  background-image:
+    
+    var(--banner-bg);
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  box-shadow:
+    0 24px 55px rgba(4, 8, 15, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.backgroundLayer {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 78% 48%,
+      rgba(255, 193, 7, 0.08),
+      transparent 30%
+    );
+
+  opacity: 1;
+}
+
+
+.banner::after {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -150px;
+  top: -190px;
+
+  border-radius: 50%;
+
+  background: var(--accent-soft);
+
+  filter: blur(45px);
+
+  opacity: 0.55;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* =================================
+   LEFT SIDE DARK BLEND
 ================================= */
 
- .banner {
-   --accent: #8a7bff;
-   --accent-soft: rgba(138, 123, 255, 0.12);
-   --accent-border: rgba(138, 123, 255, 0.22);
+.banner::before {
+  content: "";
 
-   position: relative;
-   isolation: isolate;
+  position: absolute;
 
-   display: grid;
-   grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-   align-items: center;
-   gap: 28px;
+  inset: 0;
 
-   width: 100%;
+  z-index: 2;
 
-   /* Desktop default */
-   min-height: 410px !important;
-   max-height: 450px !important;
+  pointer-events: none;
 
-   padding: 34px 36px;
+  /*
+    Stronger darkness on left,
+    gradually transparent on right.
+  */
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 12, 22, 0.18) 0%,
+      rgba(7, 12, 22, 0.08) 35%,
+      rgba(7, 12, 22, 0.02) 65%,
+      transparent 100%
+    );
+}
 
-   overflow: hidden;
 
-   border-radius: 24px;
-   border: 1px solid rgba(255, 255, 255, 0.09);
-
-   background:
-  linear-gradient(
-    135deg,
-    #181d29 0%,
-    #141922 55%,
-    #11151d 100%
-  );
-
-   box-shadow:
-     0 24px 55px rgba(4, 8, 15, 0.34),
-     inset 0 1px 0 rgba(255, 255, 255, 0.035);
-
-   transition:
-     border-color 0.25s ease,
-     box-shadow 0.25s ease;
- }
-
- /* =================================
-   Background Image Layer
+/* =================================
+   HOVER
 ================================= */
 
- .banner::before {
-   content: "";
+.banner:hover {
+  border-color: rgba(255, 255, 255, 0.13);
 
-   position: absolute;
-   inset: 0;
+  box-shadow:
+    0 28px 65px rgba(4, 8, 15, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
 
-   background-image:
-     linear-gradient(90deg,
-       rgba(10, 13, 18, 0.25) 0%,
-       rgba(10, 13, 18, 0.16) 35%,
-       rgba(10, 13, 18, 0.08) 65%,
-       rgba(10, 13, 18, 0.02) 100%),
-     var(--banner-bg-image, none);
 
-   background-size: 100% auto;
-   background-position: center;
-   background-repeat: no-repeat;
-
-   pointer-events: none;
-   z-index: -1;
- }
-
- /* =================================
-   Background Glow
+/* =================================
+   THEMES
 ================================= */
 
- .banner::after {
-   content: "";
+.default {
+  --accent: #8a7bff;
+  --accent-soft: rgba(138, 123, 255, 0.12);
+  --accent-border: rgba(138, 123, 255, 0.22);
+}
 
-   position: absolute;
 
-   width: 420px;
-   height: 420px;
+.blue {
+  --accent: #6ca8ff;
+  --accent-soft: rgba(108, 168, 255, 0.12);
+  --accent-border: rgba(108, 168, 255, 0.22);
+}
 
-   right: -150px;
-   top: -190px;
 
-   border-radius: 50%;
+.gold {
+  --accent: #e7c978;
+  --accent-soft: rgba(231, 201, 120, 0.1);
+  --accent-border: rgba(231, 201, 120, 0.2);
+}
 
-   background: var(--accent-soft);
 
-   filter: blur(45px);
-   opacity: 0.65;
+.purple {
+  --accent: #a18cff;
+  --accent-soft: rgba(161, 140, 255, 0.12);
+  --accent-border: rgba(161, 140, 255, 0.23);
+}
 
-   pointer-events: none;
-   z-index: 3;
- }
 
- /* =================================
-   Hover
+.silver {
+  --accent: #b8c1d1;
+  --accent-soft: rgba(184, 193, 209, 0.08);
+  --accent-border: rgba(184, 193, 209, 0.18);
+}
+
+
+/* =================================
+   CONTENT
 ================================= */
 
- .banner:hover {
-   border-color: rgba(255, 255, 255, 0.13);
+.content {
+  position: relative;
 
-   box-shadow:
-     0 28px 65px rgba(4, 8, 15, 0.4),
-     inset 0 1px 0 rgba(255, 255, 255, 0.04);
- }
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+
+  min-width: 0;
+
+  height: 100%;
+
+  max-width: 650px;
+
+  padding: 36px 42px;
+}
 
 
- /* =================================
-   Themes
+/* =================================
+   HEADING WRAPPER
 ================================= */
 
- .default {
-   --accent: #8a7bff;
-   --accent-soft: rgba(138, 123, 255, 0.12);
-   --accent-border: rgba(138, 123, 255, 0.22);
-
-   background:
-     linear-gradient(135deg,
-       #181d29 0%,
-       #141922 55%,
-       #11151d 100%);
- }
-
- .blue {
-   --accent: #6ca8ff;
-   --accent-soft: rgba(108, 168, 255, 0.12);
-   --accent-border: rgba(108, 168, 255, 0.22);
-
-   background:
-     linear-gradient(135deg,
-       #161d2a 0%,
-       #131a25 55%,
-       #10151d 100%);
- }
-
- .gold {
-   --accent: #e7c978;
-   --accent-soft: rgba(231, 201, 120, 0.1);
-   --accent-border: rgba(231, 201, 120, 0.2);
-
-   background:
-     linear-gradient(135deg,
-       #211e19 0%,
-       #191817 55%,
-       #131519 100%);
- }
-
- .purple {
-   --accent: #a18cff;
-   --accent-soft: rgba(161, 140, 255, 0.12);
-   --accent-border: rgba(161, 140, 255, 0.23);
-
-   background:
-     linear-gradient(135deg,
-       #1d1a27 0%,
-       #171821 55%,
-       #12151d 100%);
- }
-
- .silver {
-   --accent: #b8c1d1;
-   --accent-soft: rgba(184, 193, 209, 0.08);
-   --accent-border: rgba(184, 193, 209, 0.18);
-
-   background:
-     linear-gradient(135deg,
-       #1b1e25 0%,
-       #16191f 55%,
-       #11141a 100%);
- }
+.headlineWrap {
+  margin-bottom: 16px;
+}
 
 
- /* =================================
-   Content
+/* =================================
+   KICKER
 ================================= */
 
- .content {
-   position: relative;
-   z-index: 3;
+.kicker {
+  display: inline-flex;
 
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
+  align-items: center;
 
-   width: 100%;
-   min-width: 0;
-   height: 100%;
+  width: fit-content;
 
-   max-width: 570px;
- }
+  margin-bottom: 14px;
+
+  padding: 7px 11px;
+
+  border-radius: 8px;
+
+  background: var(--accent-soft);
+
+  border: 1px solid var(--accent-border);
+
+  color: var(--accent);
+
+  font-size: 0.68rem;
+
+  line-height: 1;
+
+  font-weight: 750;
+
+  letter-spacing: 0.095em;
+
+  text-transform: uppercase;
+
+  backdrop-filter: blur(8px);
+}
 
 
- /* =================================
-   Heading
+.kicker::before {
+  content: "";
+
+  width: 5px;
+  height: 5px;
+
+  margin-right: 7px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+
+  opacity: 0.85;
+
+  box-shadow:
+    0 0 8px currentColor;
+}
+
+
+/* =================================
+   TITLE
 ================================= */
 
- .headlineWrap {
-   margin-bottom: 16px;
- }
+.title {
+  margin: 0;
 
- .kicker {
-   display: inline-flex;
-   align-items: center;
+  max-width: 540px;
 
-   width: fit-content;
+  color: var(--white);
 
-   margin-bottom: 14px;
-   padding: 7px 11px;
+  font-size: clamp(2.15rem, 4vw, 3.25rem);
 
-   border-radius: 8px;
+  line-height: 1.04;
 
-   background: var(--accent-soft);
-   border: 1px solid var(--accent-border);
+  font-weight: 750;
 
-   color: var(--accent);
+  letter-spacing: -0.055em;
 
-   font-size: 0.68rem;
-   line-height: 1;
-   font-weight: 750;
+  text-wrap: balance;
 
-   letter-spacing: 0.095em;
-   text-transform: uppercase;
- }
-
- .kicker::before {
-   content: "";
-
-   width: 5px;
-   height: 5px;
-
-   margin-right: 7px;
-
-   border-radius: 50%;
-
-   background: currentColor;
-   opacity: 0.85;
- }
-
- .title {
-   margin: 0;
-
-   max-width: 540px;
-
-   color: var(--white);
-
-   font-size: clamp(2.15rem, 4vw, 3.25rem);
-   line-height: 1.04;
-
-   font-weight: 750;
-   letter-spacing: -0.055em;
- }
+  text-shadow:
+    0 2px 18px rgba(0, 0, 0, 0.25);
+}
 
 
- /* =================================
-   Description
+/* =================================
+   DESCRIPTION
 ================================= */
 
- .description {
-   margin: 0;
+.description {
+  margin: 0;
 
-   max-width: 525px;
+  max-width: 525px;
 
-   color: rgba(245, 247, 251, 0.66);
+  color: rgba(245, 247, 251, 0.72);
 
-   font-size: 0.97rem;
-   line-height: 1.72;
+  font-size: 0.97rem;
 
-   letter-spacing: -0.005em;
- }
+  line-height: 1.72;
+
+  letter-spacing: -0.005em;
+
+  text-shadow:
+    0 1px 10px rgba(0, 0, 0, 0.2);
+}
 
 
- /* =================================
-   Highlight
+/* =================================
+   HIGHLIGHT
 ================================= */
 
- .highlight {
-   display: inline-flex;
-   align-items: center;
+.highlight {
+  display: inline-flex;
 
-   width: fit-content;
-   max-width: 100%;
+  align-items: center;
 
-   margin-top: 20px;
-   padding: 9px 12px;
+  width: fit-content;
 
-   border-radius: 9px;
+  max-width: 100%;
 
-   background: rgba(255, 255, 255, 0.035);
-   border: 1px solid rgba(255, 255, 255, 0.075);
+  margin-top: 20px;
 
-   color: rgba(245, 247, 251, 0.78);
+  padding: 9px 12px;
 
-   font-size: 0.76rem;
-   line-height: 1.2;
-   font-weight: 650;
- }
+  border-radius: 9px;
 
- .highlight::before {
-   content: "";
+  background:
+    rgba(10, 15, 25, 0.48);
 
-   flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.075);
 
-   width: 6px;
-   height: 6px;
+  color: rgba(245, 247, 251, 0.82);
 
-   margin-right: 8px;
+  font-size: 0.76rem;
 
-   border-radius: 50%;
+  line-height: 1.2;
 
-   background: var(--accent);
-   box-shadow: 0 0 0 4px var(--accent-soft);
- }
+  font-weight: 650;
+
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
 
 
- /* =================================
+.highlight::before {
+  content: "";
+
+  flex: 0 0 auto;
+
+  width: 6px;
+  height: 6px;
+
+  margin-right: 8px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  box-shadow:
+    0 0 0 4px var(--accent-soft),
+    0 0 12px var(--accent);
+}
+
+
+/* =================================
    CTA
 ================================= */
 
- .cta {
-   position: relative;
+.cta {
+  position: relative;
 
-   display: inline-flex;
-   align-items: center;
-   justify-content: space-between;
+  display: inline-flex;
 
-   width: fit-content;
-   min-width: 185px;
+  align-items: center;
 
-   margin-top: 24px;
-   padding: 7px 7px 7px 16px;
+  justify-content: space-between;
 
-   border-radius: 11px;
+  width: fit-content;
 
-   background: #D4AF37;
-   border: 1px solid rgba(255, 255, 255, 0.105);
+  min-width: 185px;
 
-   color: black;
+  margin-top: 24px;
 
-   font-size: 0.84rem;
-   font-weight: 700;
+  padding: 7px 7px 7px 16px;
 
-   text-decoration: none;
+  border-radius: 11px;
 
-   box-shadow:
-     0 8px 20px rgba(0, 0, 0, 0.16),
-     inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  background: #d4af37;
 
-   transition:
-     background 0.22s ease,
-     border-color 0.22s ease,
-     transform 0.22s ease,
-     box-shadow 0.22s ease;
- }
+  border: 1px solid rgba(255, 255, 255, 0.105);
 
- .cta:hover,
- .cta:focus-visible {
-   background: rgba(255, 255, 255, 0.085);
-   border-color: var(--accent-border);
+  color: #000000;
 
-   transform: translateY(-1px);
+  font-size: 0.84rem;
 
-   box-shadow:
-    0 8px 18px rgba(217, 184, 76, 0.28),
-    0 4px 8px rgba(217, 184, 76, 0.16),
-    inset 0 1px 0 rgba(255, 240, 180, 0.35);
+  font-weight: 700;
 
-   color: var(--white);
- }
+  text-decoration: none;
 
- .cta:focus-visible {
-   outline: 2px solid var(--accent);
-   outline-offset: 3px;
- }
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.16),
+    0 5px 22px rgba(212, 175, 55, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
 
 
- /* =================================
-   CTA Arrow
+.cta:hover,
+.cta:focus-visible {
+  background: #e0bd48;
+
+  border-color: rgba(255, 235, 150, 0.5);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.18),
+    0 7px 25px rgba(212, 175, 55, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+
+  color: #000000;
+}
+
+
+.cta:focus-visible {
+  outline: 2px solid var(--accent);
+
+  outline-offset: 3px;
+}
+
+
+/* =================================
+   CTA ARROW
 ================================= */
 
- .arrowWrap {
+.arrowWrap {
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
 
   width: 30px;
   height: 30px;
 
   margin-left: 12px;
+
   border-radius: 50%;
 
-  background: #0B1B35; /* Navy Blue */
-  color: #D9B84C;      /* Button Gold */
+  background: #0b1b35;
+
+  color: #d9b84c;
 
   transition:
     transform 0.22s ease,
@@ -402,253 +470,582 @@
     color 0.22s ease;
 }
 
-.arrowWrap:hover {
+
+.cta:hover .arrowWrap,
+.cta:focus-visible .arrowWrap {
   transform: translateX(3px);
-  background: #10284A;
-  color: #E3C45B;
+
+  background: #172b4a;
+
+  color: #f0ce61;
 }
- .cta:hover .arrowWrap,
- .cta:focus-visible .arrowWrap {
-   transform: translateX(3px);
-   background: var(--accent-border);
- }
 
 
- /* =================================
-   Visual
+/* =================================
+   OPTIONAL FOREGROUND CHILDREN
 ================================= */
 
- .visual {
-   position: relative;
-   z-index: 2;
+.imageSection {
+  position: absolute;
 
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  inset: 0;
 
-   width: 100%;
-   min-width: 0;
-   min-height: 0;
-   height: 100%;
+  z-index: 4;
 
-   border-radius: 18px;
- }
+  width: 100%;
+  height: 100%;
 
- .visual::before {
-   content: "";
+  pointer-events: none;
 
-   position: absolute;
-
-   width: 86%;
-   height: 82%;
-
-   border-radius: 24px;
-
-   background: rgba(255, 255, 255, 0.012);
-   border: 1px solid rgba(255, 255, 255, 0.035);
-
-   pointer-events: none;
- }
+  overflow: hidden;
+}
 
 
- /* =================================
-   Laptop / Desktop
-   Height: 410px - 450px
+/* =================================
+   DESKTOP / LAPTOP
+   1025px+
 ================================= */
 
- @media (min-width: 1025px) {
-   .banner {
-     height: 430px;
-     min-height: 410px;
-     max-height: 450px;
-   }
- }
+@media (min-width: 1025px) {
+
+  .banner {
+    height: 430px;
+
+    min-height: 410px;
+
+    max-height: 450px;
+
+    /*
+      Main image position.
+      Change to 55% / 60% if subject
+      needs to move slightly right.
+    */
+    background-position: center center;
+  }
 
 
- /* =================================
-   Tablet
-   Height: 380px - 540px
+  .backgroundLayer {
+    background:
+      radial-gradient(
+        circle at 78% 50%,
+        rgba(255, 193, 7, 0.09),
+        transparent 32%
+      );
+  }
+
+
+  .content {
+    padding: 36px 42px;
+  }
+}
+
+
+/* =================================
+   LARGE DESKTOP
+   1400px+
 ================================= */
 
- @media (min-width: 601px) and (max-width: 1024px) {
-   .banner {
-     grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-     gap: 20px;
+@media (min-width: 1400px) {
 
-     height: 460px;
-     min-height: 380px;
-     max-height: 540px;
-
-     padding: 30px;
-   }
-
-   .title {
-     font-size: clamp(2rem, 4vw, 2.7rem);
-   }
-
-   .description {
-     max-width: 100%;
-     font-size: 0.93rem;
-     line-height: 1.65;
-   }
-
-   .visual {
-     min-height: 0;
-   }
- }
+  .banner {
+    background-position: center center;
+  }
 
 
- /* =================================
-   Small Laptop / Narrow Tablet
+  .content {
+    padding-left: 52px;
+  }
+
+
+  .title {
+    font-size: clamp(
+      2.4rem,
+      3.4vw,
+      3.4rem
+    );
+  }
+}
+
+
+/* =================================
+   TABLET
+   601px - 1024px
 ================================= */
 
- @media (max-width: 860px) and (min-width: 601px) {
-   .banner {
-     grid-template-columns: 1fr;
-     gap: 18px;
+@media (min-width: 601px) and (max-width: 1024px) {
 
-     height: 520px;
-     min-height: 380px;
-     max-height: 540px;
+  .banner {
+    height: 460px;
 
-     padding: 30px 24px 24px;
-   }
+    min-height: 380px;
 
-   .content {
-     max-width: 100%;
-     height: auto;
+    max-height: 540px;
 
-   }
+    /*
+      Slightly stronger left gradient
+      for tablet readability.
+    */
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(7, 12, 22, 0.98) 0%,
+        rgba(7, 12, 22, 0.92) 25%,
+        rgba(7, 12, 22, 0.68) 45%,
+        rgba(7, 12, 22, 0.28) 68%,
+        rgba(7, 12, 22, 0.08) 100%
+      ),
+      var(--banner-bg);
 
-   .description {
-     max-width: 650px;
-   }
+    background-size: cover;
 
-   .visual {
-     min-height: 245px;
-     height: auto;
-   }
-
-   .visual::before {
-     width: 92%;
-     height: 90%;
-   }
- }
+    background-position: center center;
+  }
 
 
+  .content {
+    max-width: 58%;
 
- /* =================================
-   Mobile
-   Height: Minimum 330px
+    padding: 30px;
+  }
+
+
+  .title {
+    font-size: clamp(
+      2rem,
+      4vw,
+      2.7rem
+    );
+  }
+
+
+  .description {
+    max-width: 100%;
+
+    font-size: 0.93rem;
+
+    line-height: 1.65;
+  }
+
+
+  .highlight {
+    max-width: 100%;
+  }
+}
+
+
+/* =================================
+   NARROW TABLET
+   601px - 860px
 ================================= */
 
- @media (max-width: 600px) {
-   .banner {
-     grid-template-columns: 1fr;
-     gap: 18px;
+@media (min-width: 601px) and (max-width: 860px) {
 
-     height: auto;
-     min-height: 330px;
-     max-height: none;
+  .banner {
+    height: 500px;
 
-     padding: 25px 18px 18px;
+    min-height: 380px;
 
-     border-radius: 20px;
-   }
+    max-height: 540px;
 
-   .content {
-     max-width: 100%;
-     height: auto;
-   }
+    background-position: 60% center;
 
-   .headlineWrap {
-     margin-bottom: 13px;
-   }
-
-   .kicker {
-     margin-bottom: 12px;
-     padding: 6px 9px;
-
-     font-size: 0.63rem;
-   }
-
-   .title {
-     font-size: 2rem;
-     letter-spacing: -0.045em;
-   }
-
-   .description {
-     max-width: 100%;
-
-     font-size: 0.9rem;
-     line-height: 1.65;
-   }
-
-   .highlight {
-     margin-top: 16px;
-
-     font-size: 0.7rem;
-   }
-
-   .cta {
-     margin-top: 20px;
-
-     min-width: 175px;
-   }
-
-   .visual {
-     min-height: 0;
-     height: auto;
-   }
-
-   .visual::before {
-     width: 92%;
-     height: 90%;
-   }
- }
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(7, 12, 22, 0.99) 0%,
+        rgba(7, 12, 22, 0.94) 30%,
+        rgba(7, 12, 22, 0.70) 52%,
+        rgba(7, 12, 22, 0.25) 75%,
+        rgba(7, 12, 22, 0.08) 100%
+      ),
+      var(--banner-bg);
+  }
 
 
- /* =================================
-   Small Mobile
+  .content {
+    max-width: 62%;
+
+    padding: 26px;
+  }
+
+
+  .title {
+    font-size: clamp(
+      1.9rem,
+      4vw,
+      2.4rem
+    );
+  }
+
+
+  .description {
+    font-size: 0.9rem;
+
+    line-height: 1.65;
+  }
+
+
+  .cta {
+    margin-top: 20px;
+  }
+}
+
+
+/* =================================
+   MOBILE
+   600px AND BELOW
+
+   Image TOP
+   Content BOTTOM
 ================================= */
 
- @media (max-width: 380px) {
-   .banner {
-     gap: 14px;
+@media (max-width: 600px) {
 
-     min-height: 330px;
-     max-height: 520px;
+  .banner {
+    display: grid;
 
-     padding: 22px 15px 16px;
-   }
+    grid-template-columns: 1fr;
 
-   .title {
-     font-size: 1.8rem;
-   }
+    grid-template-rows:
+      250px
+      auto;
 
-   .description {
-     font-size: 0.86rem;
-   }
+    gap: 0;
 
-   .visual {
-     min-height: 0;
-   }
- }
+    width: 100%;
+
+    height: auto;
+
+    min-height: 330px;
+
+    max-height: none;
+
+    padding: 0;
+
+    border-radius: 20px;
+
+    /*
+      Desktop background removed.
+      Mobile image goes into
+      backgroundLayer.
+    */
+    background-image: none;
+
+    background-color: #11151d;
+  }
 
 
- /* =================================
-   Reduced Motion
+  /* =================================
+     MOBILE BACKGROUND IMAGE
+  ================================= */
+
+  .backgroundLayer {
+    position: relative;
+
+    inset: auto;
+
+    grid-row: 1;
+
+    width: 100%;
+
+    height: 250px;
+
+    z-index: 1;
+
+    overflow: hidden;
+
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(7, 12, 22, 0.02) 100%,
+        rgba(7, 12, 22, 0.04) 100%,
+        rgba(7, 12, 22, 0.38) 100%
+      ),
+      var(--banner-bg);
+
+    background-size: 100% 100%;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+
+    border-radius:
+      20px 20px 0 0;
+  }
+
+
+  /* =================================
+     MOBILE OVERLAY
+  ================================= */
+
+  .banner::before {
+    display: none;
+  }
+
+
+  .banner::after {
+    width: 280px;
+
+    height: 280px;
+
+    right: -100px;
+
+    top: -120px;
+
+    opacity: 0.35;
+
+    z-index: 2;
+  }
+
+
+  /* =================================
+     MOBILE CONTENT
+  ================================= */
+
+  .content {
+    grid-row: 2;
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    height: auto;
+
+    max-width: 100%;
+
+    padding:
+      26px
+      20px
+      24px;
+
+    background:
+      linear-gradient(
+        180deg,
+        #11151d 0%,
+        #0d121c 100%
+      );
+
+    border-radius:
+      0 0 20px 20px;
+  }
+
+
+  /* =================================
+     MOBILE OPTIONAL CHILDREN
+  ================================= */
+
+  .imageSection {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 4;
+  }
+
+
+  /* =================================
+     MOBILE HEADING
+  ================================= */
+
+  .headlineWrap {
+    margin-bottom: 13px;
+  }
+
+
+  .kicker {
+    margin-bottom: 12px;
+
+    padding: 6px 9px;
+
+    font-size: 0.63rem;
+  }
+
+
+  .title {
+    max-width: 100%;
+
+    font-size: 2rem;
+
+    line-height: 1.06;
+
+    letter-spacing: -0.045em;
+  }
+
+
+  .description {
+    max-width: 100%;
+
+    font-size: 0.9rem;
+
+    line-height: 1.65;
+  }
+
+
+  .highlight {
+    width: fit-content;
+
+    max-width: 100%;
+
+    margin-top: 16px;
+
+    font-size: 0.7rem;
+  }
+
+
+  .cta {
+    margin-top: 20px;
+
+    min-width: 175px;
+  }
+}
+
+
+/* =================================
+   SMALL MOBILE
+   380px AND BELOW
 ================================= */
 
- @media (prefers-reduced-motion: reduce) {
+@media (max-width: 380px) {
 
-   .banner,
-   .cta,
-   .arrowWrap {
-     transition: none;
-   }
+  .banner {
+    grid-template-rows:
+      220px
+      auto;
 
-   .cta:hover {
-     transform: none;
-   }
- }
+    min-height: 330px;
+
+    border-radius: 18px;
+  }
+
+
+  .backgroundLayer {
+    height: 220px;
+
+    border-radius:
+      18px 18px 0 0;
+
+    background-position: center center;
+  }
+
+
+  .content {
+    padding:
+      22px
+      16px
+      20px;
+
+    border-radius:
+      0 0 18px 18px;
+  }
+
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+
+  .description {
+    font-size: 0.86rem;
+
+    line-height: 1.6;
+  }
+
+
+  .kicker {
+    font-size: 0.6rem;
+  }
+
+
+  .highlight {
+    font-size: 0.68rem;
+
+    padding: 8px 10px;
+  }
+
+
+  .cta {
+    min-width: 165px;
+
+    margin-top: 18px;
+  }
+}
+
+
+/* =================================
+   VERY SMALL DEVICES
+   340px AND BELOW
+================================= */
+
+@media (max-width: 340px) {
+
+  .banner {
+    grid-template-rows:
+      200px
+      auto;
+  }
+
+
+  .backgroundLayer {
+    height: 200px;
+  }
+
+
+  .content {
+    padding:
+      20px
+      14px
+      18px;
+  }
+
+
+  .title {
+    font-size: 1.65rem;
+  }
+
+
+  .description {
+    font-size: 0.82rem;
+  }
+
+
+  .cta {
+    min-width: 155px;
+
+    padding-left: 13px;
+  }
+
+
+  .arrowWrap {
+    width: 28px;
+    height: 28px;
+
+    margin-left: 9px;
+  }
+}
+
+
+/* =================================
+   REDUCED MOTION
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .banner,
+  .cta,
+  .arrowWrap {
+    transition: none;
+  }
+
+
+  .cta:hover {
+    transform: none;
+  }
+
+
+  .cta:hover .arrowWrap,
+  .cta:focus-visible .arrowWrap {
+    transform: none;
+  }
+}
